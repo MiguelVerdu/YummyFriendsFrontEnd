@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpClientModule } from '@angular/common/http';
 import { CiudadProvider } from '../providers/ciudad/ciudad';
+import { VariablesGlobalesProvider } from '../providers/variables-globales/variables-globales';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CiudadProvider } from '../providers/ciudad/ciudad';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CiudadProvider
+    CiudadProvider,
+    VariablesGlobalesProvider
   ]
 })
 export class AppModule {}
