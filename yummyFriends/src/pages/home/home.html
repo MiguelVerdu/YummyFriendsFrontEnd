@@ -4,6 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="cerrarSesion()">
+          <ion-icon ios="md-exit" md="md-exit"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -11,7 +16,8 @@
   <h3>Ionic Menu Starter</h3>
 
   <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
+    If you get lost, the
+    <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
   </p>
 
   <div *ngFor="let c of ciudades">

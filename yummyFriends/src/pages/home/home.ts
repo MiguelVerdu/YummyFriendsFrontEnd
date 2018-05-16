@@ -16,12 +16,14 @@ export class HomePage {
 
   ngOnInit(){
     this.CiudadProvider.getCiudades().subscribe((data) => {
-      debugger
       this.ciudades = data;
     },
     (error: any) => {
         console.log(error);
     });
+  }
+  cerrarSesion(){
+    this.navCtrl.popToRoot();
   }
 
 }

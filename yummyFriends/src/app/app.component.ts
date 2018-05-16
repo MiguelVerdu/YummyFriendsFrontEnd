@@ -22,7 +22,13 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
+      { title: 'List', component: ListPage },
+      { title: 'Perfil', component: null} ,
+      { title: 'Listado Ventas', component: null} , //solo vendedor
+      { title: 'Compras realizadas', component: null} ,
+      { title: 'Encargos', component: null} ,
+      { title: 'Carrito', component: null} ,
+      { title: 'About us', component: null}
     ];
 
   }
@@ -41,4 +47,5 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
 }

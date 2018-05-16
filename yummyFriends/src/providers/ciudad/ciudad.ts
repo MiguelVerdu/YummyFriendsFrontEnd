@@ -13,7 +13,8 @@ export class CiudadProvider {
 
   getCiudades():Observable<any>{
     console.log(this.vagl.ip+"getCiudades")
-    return this.http.get(this.vagl.ip+"getCiudades");
+    let url = this.vagl.ip+"getCiudades";
+    return this.http.get(url);
   }
 
 }
