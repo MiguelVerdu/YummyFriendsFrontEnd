@@ -26,4 +26,12 @@ export class HomePage {
     this.navCtrl.popToRoot();
   }
 
+  onInput(evento){
+    alert(Object.keys(evento))
+  }
+
+  onCancel(evento){
+
+  }
+
 }
