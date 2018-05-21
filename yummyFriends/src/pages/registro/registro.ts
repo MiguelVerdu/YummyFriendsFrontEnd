@@ -17,6 +17,7 @@ export class RegistroPage {
   }
 
   saveData(){
+    debugger
     console.log(this.myForm.value);
   }
 
@@ -30,7 +31,7 @@ export class RegistroPage {
         password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/)]],
         passwordConfirmation: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/)]]
       }),
-      gender: ['', Validators.required],
+      tipo: ['', Validators.required],
     });
   }
 

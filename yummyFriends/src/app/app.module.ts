@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
+import { RecuperarPassPage } from '../pages/recuperar-pass/recuperar-pass';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,7 +22,8 @@ import { LoginProvider } from '../providers/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    RegistroPage
+    RegistroPage,
+    RecuperarPassPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { LoginProvider } from '../providers/login/login';
     HomePage,
     ListPage,
     LoginPage,
-    RegistroPage
+    RegistroPage,
+    RecuperarPassPage
   ],
   providers: [
     StatusBar,
