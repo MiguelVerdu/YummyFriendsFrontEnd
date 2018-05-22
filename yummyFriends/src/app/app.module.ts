@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CiudadProvider } from '../providers/ciudad/ciudad';
 import { VariablesGlobalesProvider } from '../providers/variables-globales/variables-globales';
 import { LoginProvider } from '../providers/login/login';
+import { RecuperarPassProvider } from '../providers/recuperar-pass/recuperar-pass';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { LoginProvider } from '../providers/login/login';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CiudadProvider,
     VariablesGlobalesProvider,
-    LoginProvider
+    LoginProvider,
+    RecuperarPassProvider
   ]
 })
 export class AppModule {}
