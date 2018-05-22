@@ -14,12 +14,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'recuperar-pass.html',
 })
 export class RecuperarPassPage {
+  tam: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RecuperarPassPage');
-  }
+  generarPass(tam) {
+    let longitud: number = parseInt(tam);
 
+    var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ12346789";
+    var contraseña = "";
+    for (var i = 0; i < longitud; i++) {
+      contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+  }
 }

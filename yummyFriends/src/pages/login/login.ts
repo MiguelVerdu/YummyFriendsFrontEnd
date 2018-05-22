@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { RegistroPage } from '../registro/registro';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { RecuperarPassPage } from '../recuperar-pass/recuperar-pass';
 
 @Component({
   selector: 'page-login',
@@ -22,6 +23,7 @@ export class LoginPage {
   }
 
   login() {
+    this.showLoading();
     if (this.myform.valid) {
       console.log("Form Submitted!");
       this.myform.reset();
@@ -45,6 +47,10 @@ export class LoginPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  recuperarPass(){
+    this.navCtrl.push(RecuperarPassPage);
   }
 
   registrarse() {

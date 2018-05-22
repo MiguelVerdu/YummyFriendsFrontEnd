@@ -28,12 +28,13 @@
           </ion-list>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col class="signup-col">
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!myform.valid">Iniciar sesión</button>
-          <button ion-button class="register-btn" block clear (click)="registrarse()">Registrarse</button>
-        </ion-col>
-      </ion-row>
     </form>
   </div>
+  <ion-row>
+    <ion-col class="signup-col">
+      <button ion-button class="submit-btn" full type="submit" [disabled]="!myform.valid">Iniciar sesión</button>
+      <button ion-button class="register-btn" block clear (click)="registrarse()">Registrarse</button>
+      <button ion-button class="register-btn" block clear (click)="recuperarPass()">Recuperar contraseña</button>
+    </ion-col>
+  </ion-row>
 </ion-content>
