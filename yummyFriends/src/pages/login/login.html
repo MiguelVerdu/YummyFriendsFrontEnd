@@ -32,9 +32,10 @@
   </div>
   <ion-row>
     <ion-col class="signup-col">
-      <button ion-button class="submit-btn" full type="submit" [disabled]="!myform.valid">Iniciar sesión</button>
+      <button ion-button class="submit-btn" full type="submit" (click)="prueba()" [disabled]="!myform.valid">Iniciar sesión</button>
       <button ion-button class="register-btn" block clear (click)="registrarse()">Registrarse</button>
       <button ion-button class="register-btn" block clear (click)="recuperarPass()">Recuperar contraseña</button>
     </ion-col>
   </ion-row>
+  <!-- <button ion-button class="submit-btn" full (click)="prueba()">Iniciar sesión</button> -->
 </ion-content>

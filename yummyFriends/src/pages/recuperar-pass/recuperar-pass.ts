@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RecuperarPassProvider } from '../../providers/recuperar-pass/recuperar-pass';
 import { CiudadProvider } from '../../providers/ciudad/ciudad';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 @Component({
   selector: 'page-recuperar-pass',
@@ -11,7 +12,8 @@ export class RecuperarPassPage {
   tam: number;
   email: string = "miguelverdu1812@gmail.com";
 
-  constructor(public CiudadProvider: CiudadProvider, public navCtrl: NavController, public navParams: NavParams, public recPassProv: RecuperarPassProvider) {
+  constructor(public CiudadProvider: CiudadProvider, public navCtrl: NavController, public navParams: NavParams,
+                public recPassProv: RecuperarPassProvider, public emailComposer: EmailComposer) {
   }
 
   ngOnInit() {
@@ -34,7 +36,32 @@ export class RecuperarPassPage {
     if (this.email.trim().length > 0) {
       console.log(this.email);
       this.recPassProv.recuperarPass(this.email).subscribe((data) => {
-        console.log(data);
+        if (data != null) {
+          console.log("Te hemos mandado un email con tu nueva contraseña");
+          this.emailComposer.isAvailable().then((available: boolean) =>{
+            if(available) {
+              //Now we know we can send
+              let email = {
+                to: this.email,
+                // cc: 'erika@mustermann.de',
+                // bcc: ['john@doe.com', 'jane@doe.com'],
+                // attachments: [
+                //   'file://img/logo.png',
+                //   'res://icon.png',
+                //   'base64:icon.png//iVBORw0KGgoAAAANSUhEUg...',
+                //   'file://README.pdf'
+                // ],
+                subject: 'Solicitud de nueva contraseña',
+                body: 'Te remitimos tu nueva contraseña: ' + this.generarPass(8),
+                isHtml: true
+              };
+
+              this.emailComposer.open(email);
+            }
+           });
+        } else {
+          console.log("Este email no pertenece a ningún usuario.");
+        }
       },
         (error: any) => {
           console.log("error")

@@ -11,7 +11,7 @@ export class RecuperarPassProvider {
     console.log('Hello RecuperarPassProvider Provider');
   }
 
-  recuperarPass(email: String): Observable<any> {
+  recuperarPass(email: String): Observable<String> {
     // let headers = new HttpHeaders();
     let url = this.vagl.ip + "recuperarPass";
     // let usuario = new Usuario();
@@ -24,7 +24,7 @@ export class RecuperarPassProvider {
     // let params = "json="+json;
     // let headers = new HttpHeaders().set('Content-Type','text/plain');
 
-    return this.http.post(url, email);
+    return this.http.post<String>(url, email);
   }
 
   getUsuarios(): Observable<any>{
