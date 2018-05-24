@@ -17,9 +17,14 @@ export class RecuperarPassProvider {
     // let usuario = new Usuario();
     // usuario.mail = email;
     // console.log("url: " + url + ", email: " + email)
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    // let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'responseType' : 'text/plain' });
 
-    return this.http.post(url, {mail: email}, {headers: headers});
+    // let json = JSON.stringify(email);
+    // console.log("json: " + json)
+    // let params = "json="+json;
+    // let headers = new HttpHeaders().set('Content-Type','text/plain');
+
+    return this.http.post(url, email);
   }
 
   getUsuarios(): Observable<any>{

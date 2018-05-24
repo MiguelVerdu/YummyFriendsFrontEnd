@@ -9,7 +9,7 @@ import { CiudadProvider } from '../../providers/ciudad/ciudad';
 })
 export class RecuperarPassPage {
   tam: number;
-  email: string = "";
+  email: string = "miguelverdu1812@gmail.com";
 
   constructor(public CiudadProvider: CiudadProvider, public navCtrl: NavController, public navParams: NavParams, public recPassProv: RecuperarPassProvider) {
   }
@@ -37,6 +37,7 @@ export class RecuperarPassPage {
         console.log(data);
       },
         (error: any) => {
+          console.log("error")
           console.log(error);
         });
     } else {
