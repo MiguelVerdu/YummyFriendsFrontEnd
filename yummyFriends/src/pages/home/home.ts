@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { CiudadProvider } from '../../providers/ciudad/ciudad';
 import { Ciudad } from '../../entity/Ciudad';
+import { LoginPage } from '../login/login';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class HomePage {
     });
   }
   cerrarSesion(){
+    this.navCtrl.setRoot(LoginPage);
     this.navCtrl.popToRoot();
   }
 

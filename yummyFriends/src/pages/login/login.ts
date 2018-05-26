@@ -4,6 +4,7 @@ import { RegistroPage } from '../registro/registro';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { RecuperarPassPage } from '../recuperar-pass/recuperar-pass'
 import { LoginProvider } from '../../providers/login/login';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-login',
@@ -36,13 +37,25 @@ export class LoginPage {
 
   login() {
     this.myform.value;
-    this.showLoading();
     if (this.myform.valid) {
       console.log("Form Submitted!");
+      this.loginProvider.comprobarLogin(this.myform.value.password, this.myform.value.email).subscribe((data) => {
+        if (data != null) {
+          this.showLoading();
+          setTimeout(() => {
+            // this.navCtrl.push(HomePage);
+            this.navCtrl.setRoot(HomePage);
+          }, 1000);
+        } else {
+          this.showError("usuario o contraseña incorrectos");
+        }
+      },
+      (error: any) => {
+        console.log(error);
+      });
       // this.myform.reset();
       // this.loginProvider.comprobarLogin(this.myform.)
     }
-    console.log("dentro")
   }
 
   showLoading() {
@@ -54,10 +67,10 @@ export class LoginPage {
   }
 
   showError(text) {
-    this.loading.dismiss();
-
+    // this.loading.dismiss();
+    this.myform.reset();
     let alert = this.alertCtrl.create({
-      title: 'Fail',
+      title: 'Error',
       subTitle: text,
       buttons: ['OK']
     });
