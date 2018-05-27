@@ -1,4 +1,17 @@
+import { asPureExpressionData } from "@angular/core/src/view";
+
 export class Usuario {
+  constructor(nombre, apellidos, fechaNac, idCiudad, idCodPostal, pass, tipo, foto, mail) {
+    this.nombre = nombre;
+    this.apellidos = apellidos;
+    this.fechaNac = fechaNac;
+    this.idCiudad = idCiudad;
+    this.idCodPostal = idCodPostal;
+    this.password = pass;
+    this.tipoPerfil = tipo;
+    this.fotoPerfil = foto;
+    this.mail = mail;
+  }
   public idUsuario: number;
 
   public nombre: String;
@@ -12,7 +25,7 @@ export class Usuario {
 
   public password: String;
 
-  public tipoPerfil: boolean;
+  public tipoPerfil: String;
 
   public fotoPerfil: String;
 

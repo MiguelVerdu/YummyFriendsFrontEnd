@@ -17,6 +17,7 @@ import { VariablesGlobalesProvider } from '../providers/variables-globales/varia
 import { LoginProvider } from '../providers/login/login';
 import { RecuperarPassProvider } from '../providers/recuperar-pass/recuperar-pass';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { RegistroProvider } from '../providers/registro/registro';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EmailComposer } from '@ionic-native/email-composer';
     VariablesGlobalesProvider,
     LoginProvider,
     RecuperarPassProvider,
-    EmailComposer
+    EmailComposer,
+    RegistroProvider
   ]
 })
 export class AppModule {}

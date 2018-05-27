@@ -10,7 +10,7 @@ import { EmailComposer } from '@ionic-native/email-composer';
 })
 export class RecuperarPassPage {
   tam: number;
-  email: string = "miguelverdu1812@gmail.com";
+  email: string = "";
 
   constructor(public CiudadProvider: CiudadProvider, public navCtrl: NavController, public navParams: NavParams,
                 public recPassProv: RecuperarPassProvider, public emailComposer: EmailComposer) {

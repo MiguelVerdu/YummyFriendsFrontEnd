@@ -12,7 +12,7 @@ export class LoginProvider {
   }
 
   comprobarLogin(pass: String, email: String) {
-    let usuario = new Usuario();
+    let usuario: Usuario = new Usuario(null, null, null, null, null, null, null, null, null);
     usuario.password = pass;
     usuario.mail = email;
     let headers = new HttpHeaders();
