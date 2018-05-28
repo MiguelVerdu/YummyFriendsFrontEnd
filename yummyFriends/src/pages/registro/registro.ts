@@ -55,7 +55,6 @@ export class RegistroPage {
 
       this.registroProvider.validarUsuario(form.email).subscribe((data) => {
         if (data != null) {
-          console.log(usuario)
           usuario.idUsuario = data["idUsuario"];
           this.registroProvider.crearUsuario(usuario).subscribe((data) => {
             console.log("bien: " + data);

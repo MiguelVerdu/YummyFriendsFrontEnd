@@ -13,10 +13,14 @@
 </ion-header>
 
 <ion-content padding>
-    <!-- <ion-input type="search"></ion-input>   -->
+  <!-- <ion-input type="search"></ion-input>   -->
 
-  <ion-searchbar [showCancelButton]="true" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"
-                  animated="true" autocomplete="true" type="string">
+  <ion-searchbar [showCancelButton]="true" (ionInput)="onInput($event)" animated="true">
+    <ion-list>
+      <ion-item *ngFor="let venta of ventas">
+        {{ venta.descripcion }}
+      </ion-item>
+    </ion-list>
   </ion-searchbar>
 
   <div *ngFor="let c of ciudades">

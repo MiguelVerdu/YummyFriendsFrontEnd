@@ -18,6 +18,7 @@ import { LoginProvider } from '../providers/login/login';
 import { RecuperarPassProvider } from '../providers/recuperar-pass/recuperar-pass';
 import { EmailComposer } from '@ionic-native/email-composer';
 import { RegistroProvider } from '../providers/registro/registro';
+import { VentaProvider } from '../providers/venta/venta';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { RegistroProvider } from '../providers/registro/registro';
     LoginProvider,
     RecuperarPassProvider,
     EmailComposer,
-    RegistroProvider
+    RegistroProvider,
+    VentaProvider
   ]
 })
 export class AppModule {}

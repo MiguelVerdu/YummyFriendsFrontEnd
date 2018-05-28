@@ -3,7 +3,8 @@ import { NavController } from 'ionic-angular';
 import { CiudadProvider } from '../../providers/ciudad/ciudad';
 import { Ciudad } from '../../entity/Ciudad';
 import { LoginPage } from '../login/login';
-
+import { Venta } from '../../entity/Venta';
+import { VentaProvider } from '../../providers/venta/venta'
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,9 @@ import { LoginPage } from '../login/login';
 })
 export class HomePage {
   ciudades: Ciudad[];
-  constructor(public navCtrl: NavController, public CiudadProvider: CiudadProvider) {
+  ventas: Venta[];
+
+  constructor(public navCtrl: NavController, public CiudadProvider: CiudadProvider, public ventaProvider: VentaProvider) {
 
   }
 
