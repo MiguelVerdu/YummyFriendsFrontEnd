@@ -39,6 +39,7 @@ export class RecuperarPassPage {
         if (data != null) {
           console.log("Te hemos mandado un email con tu nueva contraseña");
           this.emailComposer.isAvailable().then((available: boolean) =>{
+            console.log("available:" + available)
             if(available) {
               //Now we know we can send
               let email = {
@@ -52,10 +53,10 @@ export class RecuperarPassPage {
                 //   'file://README.pdf'
                 // ],
                 subject: 'Solicitud de nueva contraseña',
-                body: 'Te remitimos tu nueva contraseña: ' + this.generarPass(8),
-                isHtml: true
+                body: 'Te remitimos tu nueva contraseña: ' + this.generarPass(8)
+                // , isHtml: true
               };
-
+              console.log(this.emailComposer.hasPermission);
               this.emailComposer.open(email);
             }
            });
