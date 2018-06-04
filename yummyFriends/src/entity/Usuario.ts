@@ -1,7 +1,7 @@
 import { asPureExpressionData } from "@angular/core/src/view";
 
 export class Usuario {
-  constructor(nombre, apellidos, fechaNac, idCiudad, idCodPostal, pass, tipo, foto, mail) {
+  constructor(nombre, apellidos, fechaNac, idCiudad, idCodPostal, pass, tipo, foto, mail, idUsuario?) {
     this.nombre = nombre;
     this.apellidos = apellidos;
     this.fechaNac = fechaNac;
@@ -11,6 +11,7 @@ export class Usuario {
     this.tipoPerfil = tipo;
     this.fotoPerfil = foto;
     this.mail = mail;
+    this.idUsuario = idUsuario;
   }
   public idUsuario: number;
 

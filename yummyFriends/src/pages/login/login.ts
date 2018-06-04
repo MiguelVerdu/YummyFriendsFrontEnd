@@ -12,7 +12,6 @@ import { HomePage } from '../home/home';
 })
 export class LoginPage {
   loading: Loading;
-  registerCredentials = { email: '', password: '' };
   myform: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
@@ -20,8 +19,8 @@ export class LoginPage {
     , private loginProvider: LoginProvider) {
     // this.myform = this.createMyForm();
     this.myform = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/)]],
+      email: ['miguelverdu1812@gmail.com', [Validators.required, Validators.email]],
+      password: ['18121996@Miguel', [Validators.required, Validators.pattern(/^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/)]],
     });
   }
 
@@ -41,10 +40,11 @@ export class LoginPage {
       console.log("Form Submitted!");
       this.loginProvider.comprobarLogin(this.myform.value.password, this.myform.value.email).subscribe((data) => {
         if (data != null) {
+          // console.log(data["idUsuario"]);
           this.showLoading();
           setTimeout(() => {
             // this.navCtrl.push(HomePage);
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.setRoot(HomePage, {idUsuario: data["idUsuario"]});
           }, 1000);
         } else {
           this.showError("usuario o contraseña incorrectos");
@@ -60,7 +60,7 @@ export class LoginPage {
 
   showLoading() {
     this.loading = this.loadingCtrl.create({
-      content: 'Please wait...',
+      content: 'Cargando...',
       dismissOnPageChange: true
     });
     this.loading.present();

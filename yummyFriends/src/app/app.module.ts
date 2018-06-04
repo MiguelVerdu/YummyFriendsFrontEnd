@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { RecuperarPassPage } from '../pages/recuperar-pass/recuperar-pass';
+import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,6 +20,8 @@ import { RecuperarPassProvider } from '../providers/recuperar-pass/recuperar-pas
 import { EmailComposer } from '@ionic-native/email-composer';
 import { RegistroProvider } from '../providers/registro/registro';
 import { VentaProvider } from '../providers/venta/venta';
+import { PerfilUsuarioProvider } from '../providers/perfil-usuario/perfil-usuario';
+import { DatePipe } from '@angular/common'
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { VentaProvider } from '../providers/venta/venta';
     ListPage,
     LoginPage,
     RegistroPage,
-    RecuperarPassPage
+    RecuperarPassPage,
+    PerfilUsuarioPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,8 @@ import { VentaProvider } from '../providers/venta/venta';
     ListPage,
     LoginPage,
     RegistroPage,
-    RecuperarPassPage
+    RecuperarPassPage,
+    PerfilUsuarioPage
   ],
   providers: [
     StatusBar,
@@ -53,7 +58,9 @@ import { VentaProvider } from '../providers/venta/venta';
     RecuperarPassProvider,
     EmailComposer,
     RegistroProvider,
-    VentaProvider
+    VentaProvider,
+    PerfilUsuarioProvider,
+    DatePipe
   ]
 })
 export class AppModule {}

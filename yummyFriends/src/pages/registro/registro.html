@@ -9,7 +9,7 @@
     <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>
-        <ion-label stacked>Nombres:</ion-label>
+        <ion-label stacked>Nombre:</ion-label>
         <ion-input formControlName="name" type="text" placeholder="Nombre"></ion-input>
       </ion-item>
       <ion-item>
@@ -28,14 +28,14 @@
         <ion-datetime formControlName="dateBirth" displayFormat="DD-MM-YYYY" placeholder="DD-MM-YYYY"></ion-datetime>
       </ion-item>
       <ion-item>
-          <ion-icon name="home" item-start></ion-icon>
+        <ion-icon name="home" item-start></ion-icon>
         <ion-label>Ciudad</ion-label>
         <ion-select formControlName="ciudad" interface="popover">
           <ion-option *ngFor="let c of ciudades" value="{{c.idCiudad}}">{{c.nombreCiudad}}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-          <ion-icon name="options" item-start></ion-icon>
+        <ion-icon name="options" item-start></ion-icon>
         <ion-label>Categoría</ion-label>
         <ion-select formControlName="tipo">
           <ion-option value="v">Vendedor</ion-option>

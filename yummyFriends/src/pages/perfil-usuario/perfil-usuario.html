@@ -1,0 +1,65 @@
+<ion-header>
+
+  <ion-navbar color="secondary">
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding="true">
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="http://placehold.it/300x200" />
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+  <div class="login-box">
+    <form [formGroup]="myform" (ngSubmit)="actualizar()">
+      <!-- <ion-grid> -->
+      <ion-row>
+        <ion-col>
+          <ion-list inset>
+            <ion-item>
+              <ion-label>Nombre</ion-label>
+              <ion-input type="text" formControlName="name" value="{{usuario.nombre}}"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Apellidos</ion-label>
+              <ion-input type="text" formControlName="lastName" value="{{usuario.apellidos}}"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Contraseña</ion-label>
+              <ion-input type="password" formControlName="password" value="{{usuario.password}}"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ciudad</ion-label>
+              <ion-select [ngModel]="usuario.idCiudad" formControlName="ciudad">
+                <ion-option *ngFor="let c of ciudades" value="{{c.idCiudad}}">{{c.nombreCiudad}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Fecha Nacimiento</ion-label>
+              <!-- <ion-input type="text" value="{{usuario.fechaNac | date: 'dd/MM/yyyy'}}"> </ion-input> -->
+              <ion-datetime formControlName="dateBirth" displayFormat="DD-MM-YYYY" [(ngModel)]="date"></ion-datetime>
+              <!-- {{usuario.fechaNac | date: 'dd/MM/yyyy'}} -->
+            </ion-item>
+            <ion-item>
+              <ion-label>Email:</ion-label>
+              <ion-input formControlName="email" type="email" value="{{usuario.mail}}"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <button ion-button block type="submit" [disabled]="!myform.valid">Actualizar datos</button>
+      <!-- </ion-grid> -->
+    </form>
+  </div>
+  <ion-list>
+    <p>Comentarios</p>
+    <div class="row">
+      <div class="col">Valoracion</div>
+      <div class="col">7</div>
+    </div>
+  </ion-list>
+</ion-content>

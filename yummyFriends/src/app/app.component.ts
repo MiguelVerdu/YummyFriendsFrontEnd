@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
+import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +26,7 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
-      { title: 'Perfil', component: null} ,
+      { title: 'Perfil', component: PerfilUsuarioPage} ,
       { title: 'Listado Ventas', component: null} , //solo vendedor
       { title: 'Compras realizadas', component: null} ,
       { title: 'Encargos', component: null} ,
@@ -47,7 +48,11 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    this.nav.setRoot(page.component);
+    let idUsuario;
+    if (typeof this.nav.getActive().getNavParams().data["idUsuario"] != "undefined") {
+      idUsuario = this.nav.getActive().getNavParams().data["idUsuario"];
+    }
+    this.nav.push(page.component, {idUsuario: idUsuario});
   }
 
 }
