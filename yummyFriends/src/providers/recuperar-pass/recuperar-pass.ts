@@ -13,8 +13,8 @@ export class RecuperarPassProvider {
 
   recuperarPass(email: String): Observable<String> {
     // let headers = new HttpHeaders();
-    let url = this.vagl.ip + "recuperarPass";
-    // let usuario = new Usuario();
+    let url = this.vagl.ip + "recuperarPass2";
+    let usuario = new Usuario(null,null,null,null,null,null,null,null,email,null);
     // usuario.mail = email;
     // console.log("url: " + url + ", email: " + email)
     // let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'responseType' : 'text/plain' });
@@ -24,7 +24,11 @@ export class RecuperarPassProvider {
     // let params = "json="+json;
     // let headers = new HttpHeaders().set('Content-Type','text/plain');
 
-    return this.http.post<String>(url, email);
+    return this.http.post<String>(url, usuario);
+  }
+
+  enviarEmail(email: string){
+    return this.http.get(this.vagl.ip + "enviarEmail/" + email);
   }
 
   getUsuarios(): Observable<any>{

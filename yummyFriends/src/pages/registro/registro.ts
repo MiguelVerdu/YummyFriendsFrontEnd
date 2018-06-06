@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Ciudad } from '../../entity/Ciudad';
 import { CiudadProvider } from '../../providers/ciudad/ciudad';
 import { RegistroProvider } from '../../providers/registro/registro';
 import { Usuario } from '../../entity/Usuario';
+import { LoginPage } from '../login/login';
+import {Md5} from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'page-registro',
@@ -16,13 +18,16 @@ export class RegistroPage {
   selectOptions: any;
   contador: number = 0;
   visible: boolean = false;
+  loading: Loading;
+  md5: Md5 = new Md5();
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public ciudadProvider: CiudadProvider,
     public toastController: ToastController,
     public alertController: AlertController,
-    public registroProvider: RegistroProvider
+    public registroProvider: RegistroProvider,
+    public loadingCtrl: LoadingController
   ) {
     this.selectOptions = {
       title: "Ciudad",
@@ -46,6 +51,15 @@ export class RegistroPage {
     alert.present();
   }
 
+  showLoading() {
+    this.loading = this.loadingCtrl.create({
+      spinner: "crescent",
+      content: "Creando usuario...",
+      dismissOnPageChange: true
+    });
+    this.loading.present();
+  }
+
   saveData() {
     console.log(this.myForm.value);
     let form = this.myForm.value;
@@ -53,11 +67,17 @@ export class RegistroPage {
       let usuario: Usuario = new Usuario(form.name, form.lastName, form.dateBirth,
         form.ciudad, null, form.passwordRetry.password, form.tipo, null, form.email);
 
+      usuario.password = this.md5.appendStr(usuario.password.toString()).end().toString();
       this.registroProvider.validarUsuario(form.email).subscribe((data) => {
         if (data != null) {
           usuario.idUsuario = data["idUsuario"];
           this.registroProvider.crearUsuario(usuario).subscribe((data) => {
             console.log("bien: " + data);
+            this.showLoading();
+            setTimeout(() => {
+              // this.navCtrl.push(HomePage);
+              this.navCtrl.setRoot(LoginPage, {usuario: usuario});
+            }, 1000);
           }, (error) => {
             console.log(error);
           });
