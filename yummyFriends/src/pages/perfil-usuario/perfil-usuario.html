@@ -30,7 +30,7 @@
             </ion-item>
             <ion-item>
               <ion-label>Contraseña</ion-label>
-              <ion-input type="password" formControlName="password" value="{{usuario.password}}"></ion-input>
+              <ion-input type="password" formControlName="password"></ion-input>
             </ion-item>
             <ion-item>
               <ion-label>Ciudad</ion-label>
@@ -56,10 +56,10 @@
     </form>
   </div>
   <ion-list>
-    <p>Comentarios de las últimas compras</p>
+    <p>Valoración media de tus ventas: {{valoracion}}</p>
+    <p>Comentarios de las últimas ventas</p>
     <div class="row">
-      <div class="col">Valoracion</div>
-      <div class="col">7</div>
+      <div class="col" *ngFor="let com of comentarios">{{com}}<br/></div>
     </div>
   </ion-list>
 </ion-content>

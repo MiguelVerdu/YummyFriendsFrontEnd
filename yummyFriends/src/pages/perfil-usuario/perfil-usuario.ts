@@ -13,6 +13,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CiudadProvider } from "../../providers/ciudad/ciudad";
 import { Ciudad } from "../../entity/Ciudad";
 import { DatePipe } from "@angular/common";
+import {Md5} from 'ts-md5/dist/md5';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,9 @@ export class PerfilUsuarioPage {
   // datePipe: DatePipe = new DatePipe('DD/MM/YYYY');
   date: string;
   loading: Loading;
+  md5: Md5 = new Md5();
+  comentarios: String;
+  valoracion: number;
 
   constructor(
     public navCtrl: NavController,
@@ -88,6 +92,24 @@ export class PerfilUsuarioPage {
         console.log(error);
       }
     );
+
+    this.PerfilUsuario.obtenerComentarios(this.usuario.idUsuario).subscribe(
+      data => {
+        this.comentarios = data;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+
+    this.PerfilUsuario.obtenerValoracion(this.usuario.idUsuario).subscribe(
+      data => {
+        this.valoracion = data;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
   }
 
   actualizar() {
@@ -106,6 +128,8 @@ export class PerfilUsuarioPage {
         form.email,
         this.usuario.idUsuario
       );
+      let pass = this.md5.appendStr(usuario.password.toString());
+      usuario.password = pass.end().toString();
 
       this.PerfilUsuario.actualizarUsuario(usuario).subscribe(
         data => {

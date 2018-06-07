@@ -18,4 +18,12 @@ export class PerfilUsuarioProvider {
   actualizarUsuario(usuario: Usuario){
     return this.http.put(this.vagl.ip + "actualizarUsuario/" + usuario.idUsuario, usuario);
   }
+
+  obtenerComentarios(id: number): Observable<String>{
+    return this.http.get<String>(this.vagl.ip + "obtenerComentarios/" + id);
+  }
+
+  obtenerValoracion(id: number): Observable<number>{
+    return this.http.get<number>(this.vagl.ip + "obtenerValoracion/" + id);
+  }
 }

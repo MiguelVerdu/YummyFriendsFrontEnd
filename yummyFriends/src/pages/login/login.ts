@@ -77,10 +77,10 @@ export class LoginPage {
   }
 
   login() {
-    debugger
-    this.md5.appendStr(this.myform.value.password);
-    let passCifrada = this.md5.end();
-    console.log(passCifrada.toString());
+    let aux = this.md5.appendStr(this.myform.value.password);
+    // let pass = this.md5.end();
+    let passCifrada = aux.end();
+    console.log("pass: " + this.myform.value.password + "passCifrada: " + passCifrada.toString());
     if (this.myform.valid) {
       console.log("Form Submitted!");
       this.loginProvider
@@ -91,12 +91,14 @@ export class LoginPage {
               // console.log(data["idUsuario"]);
               this.showLoading();
               setTimeout(() => {
+                this.md5.start();
                 // this.navCtrl.push(HomePage);
                 this.navCtrl.setRoot(HomePage, {
                   idUsuario: data["idUsuario"]
                 });
               }, 1000);
             } else {
+              this.md5.start();
               this.showError("usuario o contraseña incorrectos");
             }
           },
