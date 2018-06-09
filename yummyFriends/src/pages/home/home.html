@@ -12,19 +12,31 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <!-- <ion-input type="search"></ion-input>   -->
-
-  <ion-searchbar [showCancelButton]="true" (ionInput)="onInput($event)" animated="true">
-    <ion-list>
-      <ion-item *ngFor="let venta of ventas">
-        {{ venta.descripcion }}
-      </ion-item>
-    </ion-list>
-  </ion-searchbar>
-
-  <div *ngFor="let c of ciudades">
-    <p>{{c.nombreCiudad}}</p>
+<ion-content>
+  <div class="row">
+    <div style="width:70%">
+      <ion-searchbar [showCancelButton]="true" type="text" (ionInput)="onInput($event)" animated="true"></ion-searchbar>
+    </div>
+    <div style="margin-top: 7px;">
+      <button ion-button color="danger" (click)="goResBuscador()">
+        Buscar
+    </button>
+    </div>
   </div>
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-list>
+    <ion-item *ngFor="let venta of ventas">
+      <ion-thumbnail item-start>
+        <img [src]="venta.foto">
+      </ion-thumbnail>
+      <h2>{{venta.titulo}}</h2>
+      <p>
+        {{venta.rangoHoraDisponibleMin | date:'hh:mm'}} - {{venta.rangoHorarioDisponibleMax | date:'hh:mm'}}
+      </p>
+      <button ion-button clear item-end (click)="goDetalleVenta()">
+          <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+      </button>
+    </ion-item>
+
+  </ion-list>
+
 </ion-content>

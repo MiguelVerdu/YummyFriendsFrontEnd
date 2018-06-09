@@ -1,20 +1,27 @@
 export class Venta {
-	public idVenta: number;
+  public idVenta: number;
 
-	public idVendedor: number;
+  public idVendedor?: number;
 
-	public fechaCreacion: Date;
+  public fechaCreacion: Date;
 
-	public rangoHoraDisponibleMin: Date;
+  public rangoHoraDisponibleMin: Date;
 
-	public rangoHorarioDisponibleMax: Date;
+  public rangoHorarioDisponibleMax: Date;
 
-	public idProducto: number;
+  public idProducto: number;
 
-	public descripcion: String;
+  public fotoPath?: string;
 
-	public valoracion: String;
-	public cantidad: number;
+  public foto: any;
 
-	public precio: number;
+  public descripcion: String;
+
+  public valoracion: String;
+
+  public cantidad: number;
+
+  public precio: number;
+
+  public titulo: string;
 }

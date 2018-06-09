@@ -9,6 +9,8 @@ import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { RecuperarPassPage } from '../pages/recuperar-pass/recuperar-pass';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
+import { DetalleVentaPage } from '../pages/detalle-venta/detalle-venta';
+import { ResultadoBuscadorPage } from "../pages/resultado-buscador/resultado-buscador";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -22,6 +24,7 @@ import { RegistroProvider } from '../providers/registro/registro';
 import { VentaProvider } from '../providers/venta/venta';
 import { PerfilUsuarioProvider } from '../providers/perfil-usuario/perfil-usuario';
 import { DatePipe } from '@angular/common'
+import { HomeProvider } from '../providers/home/home';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { DatePipe } from '@angular/common'
     LoginPage,
     RegistroPage,
     RecuperarPassPage,
-    PerfilUsuarioPage
+    PerfilUsuarioPage,
+    DetalleVentaPage,
+    ResultadoBuscadorPage
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ import { DatePipe } from '@angular/common'
     LoginPage,
     RegistroPage,
     RecuperarPassPage,
-    PerfilUsuarioPage
+    PerfilUsuarioPage,
+    DetalleVentaPage,
+    ResultadoBuscadorPage
   ],
   providers: [
     StatusBar,
@@ -60,7 +67,8 @@ import { DatePipe } from '@angular/common'
     RegistroProvider,
     VentaProvider,
     PerfilUsuarioProvider,
-    DatePipe
+    DatePipe,
+    HomeProvider
   ]
 })
 export class AppModule {}

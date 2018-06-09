@@ -42,11 +42,11 @@ export class LoginPage {
 
     this.myform = this.formBuilder.group({
       email: [
-        usuario != null ? usuario.mail : "",
+        usuario != null ? usuario.mail : "miguelverdu1812@gmail.com",
         [Validators.required, Validators.email]
       ],
       password: [
-        "",
+        "18121996@Miguel",
         [
           Validators.required,
           Validators.pattern(

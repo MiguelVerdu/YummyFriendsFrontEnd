@@ -54,6 +54,9 @@
           <ion-input formControlName="passwordConfirmation" type="password" placeholder="Confirmar contraseña"></ion-input>
         </ion-item>
       </div>
+      <ion-item>
+        <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+      </ion-item>
     </ion-list>
     <div padding>
       <button ion-button block type="submit" [disabled]="!myForm.valid">Crear usuario</button>

@@ -30,5 +30,7 @@ export class Usuario {
 
   public fotoPerfil: String;
 
+  public fotoGuardar: File;
+
   public mail: String;
 }
