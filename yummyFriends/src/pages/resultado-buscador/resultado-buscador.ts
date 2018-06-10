@@ -33,27 +33,27 @@ export class ResultadoBuscadorPage {
     this.homeProvider.getVentasFiltradas(this.busqueda).subscribe(
       data => {
         this.ventas = data;
-        for (let i in this.ventas) {
-          this.homeProvider.getStringFoto(this.ventas[i].idProducto).subscribe(
-            data => {
-              // this.ventas[i].fotoPath = data;
-              let path = data["foto"];
-              console.log("path: " + path);
-              this.homeProvider.getFoto(path).subscribe(
-                data => {
-                  let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
-                  this.ventas[i].foto = sanitized;
-                },
-                (error: any) => {
-                  console.log(error);
-                }
-              );
-            },
-            (error: any) => {
-              console.log(error);
-            }
-          );
-        }
+        // for (let i in this.ventas) {
+        //   this.homeProvider.getStringFoto(this.ventas[i].idProducto).subscribe(
+        //     data => {
+        //       // this.ventas[i].fotoPath = data;
+        //       let path = data["foto"];
+        //       console.log("path: " + path);
+        //       this.homeProvider.getFoto(path).subscribe(
+        //         data => {
+        //           let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
+        //           this.ventas[i].foto = sanitized;
+        //         },
+        //         (error: any) => {
+        //           console.log(error);
+        //         }
+        //       );
+        //     },
+        //     (error: any) => {
+        //       console.log(error);
+        //     }
+        //   );
+        // }
       },
       (error: any) => {
         console.log(error);

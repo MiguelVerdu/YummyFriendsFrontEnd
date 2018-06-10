@@ -12,6 +12,7 @@ import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
 import { DetalleVentaPage } from "../../pages/detalle-venta/detalle-venta";
 import { ResultadoBuscadorPage } from "../resultado-buscador/resultado-buscador";
+import { VariablesGlobalesProvider } from '../../providers/variables-globales/variables-globales';
 
 @Component({
   selector: "page-home",
@@ -22,28 +23,20 @@ export class HomePage {
   private _result: BehaviorSubject<any> = new BehaviorSubject(null);
   private result: Observable<any> = this._result.asObservable();
   searchString: string;
-
+  urlFoto: string;
   constructor(
     public navCtrl: NavController,
     public CiudadProvider: CiudadProvider,
     public ventaProvider: VentaProvider,
     public homeProvider: HomeProvider,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    public vagl: VariablesGlobalesProvider
   ) {
-
     this.getVentas();
-    // this.items = [
-    //   'Natasha Romanoff',
-    //   'Tony Stark',
-    //   'Black widow',
-    //   'Hawk Eye',
-    //   'Thor',
-    //   'The Hulk'
-    // ]
+    this.urlFoto = this.vagl.ip + "fotoVenta/";
   }
 
   ionViewDidLoad(){
-
   }
 
   goDetalleVenta(id:number) {
@@ -58,28 +51,28 @@ export class HomePage {
     this.homeProvider.getVentas().subscribe(
       data => {
         this.ventas = data;
-        for (let i in this.ventas) {
-          this.homeProvider.getStringFoto(this.ventas[i].idProducto).subscribe(
-            data => {
-              // this.ventas[i].fotoPath = data;
-              let path = data["foto"];
-              console.log("path: " + path);
-              this.homeProvider.getFoto(path).subscribe(
-                data => {
-                  let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
+        // for (let i in this.ventas) {
+        //   this.homeProvider.getStringFoto(this.ventas[i].idProducto).subscribe(
+        //     data => {
+        //       // this.ventas[i].fotoPath = data;
+        //       let path = data["foto"];
+        //       console.log("path: " + path);
+        //       this.homeProvider.getFoto(path).subscribe(
+        //         data => {
+        //           let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
 
-                  this.ventas[i].foto = sanitized;
-                },
-                (error: any) => {
-                  console.log(error);
-                }
-              );
-            },
-            (error: any) => {
-              console.log(error);
-            }
-          );
-        }
+        //           this.ventas[i].foto = sanitized;
+        //         },
+        //         (error: any) => {
+        //           console.log(error);
+        //         }
+        //       );
+        //     },
+        //     (error: any) => {
+        //       console.log(error);
+        //     }
+        //   );
+        // }
       },
       (error: any) => {
         console.log(error);

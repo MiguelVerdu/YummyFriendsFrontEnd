@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>Perfil</ion-title>
+    <ion-title>Perfil Usuario</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,7 +10,7 @@
   <ion-row class="logo-row">
     <ion-col></ion-col>
     <ion-col width-67>
-      <img src="http://placehold.it/300x200" />
+      <img src="http://192.168.100.6:8080/recogerUsuario/{{usuario.idUsuario}}" />
     </ion-col>
     <ion-col></ion-col>
   </ion-row>
@@ -20,6 +20,9 @@
       <ion-row>
         <ion-col>
           <ion-list inset>
+            <ion-item>
+              <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+            </ion-item>
             <ion-item>
               <ion-label>Nombre</ion-label>
               <ion-input type="text" formControlName="name" value="{{usuario.nombre}}"></ion-input>

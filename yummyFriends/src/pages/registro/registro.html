@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="myForm" (ngSubmit)="saveData()">
+  <form [formGroup]="myForm" (ngSubmit)="saveData()" enctype='multipart/form-data'>
     <ion-list>
       <ion-item>
         <ion-icon name="person" item-start></ion-icon>

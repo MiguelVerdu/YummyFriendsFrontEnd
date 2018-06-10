@@ -14,6 +14,7 @@ import { CiudadProvider } from "../../providers/ciudad/ciudad";
 import { Ciudad } from "../../entity/Ciudad";
 import { DatePipe } from "@angular/common";
 import {Md5} from 'ts-md5/dist/md5';
+import { RegistroProvider } from '../../providers/registro/registro';
 
 @IonicPage()
 @Component({
@@ -40,6 +41,7 @@ export class PerfilUsuarioPage {
   md5: Md5 = new Md5();
   comentarios: String;
   valoracion: number;
+  fileToUpload: File = null;
 
   constructor(
     public navCtrl: NavController,
@@ -49,10 +51,15 @@ export class PerfilUsuarioPage {
     public ciudadProv: CiudadProvider,
     public datepipe: DatePipe,
     public alertController: AlertController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public homeProvider:RegistroProvider
   ) {
     this.usuario.idUsuario = this.navParams.get("idUsuario");
     this.myform = this.createMyForm();
+  }
+
+  handleFileInput(files: FileList){
+    this.fileToUpload = files.item(0);
   }
 
   ionViewDidLoad() {
@@ -134,6 +141,13 @@ export class PerfilUsuarioPage {
       this.PerfilUsuario.actualizarUsuario(usuario).subscribe(
         data => {
           if (data != null) {
+            this.homeProvider.guardarFoto(usuario.idUsuario, this.fileToUpload).subscribe(
+              data => {
+
+              }, error => {
+                console.log(error)
+              }
+            )
             console.log("bien: " + data);
             this.showLoading();
             setTimeout(() => {

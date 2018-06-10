@@ -21,6 +21,9 @@ export class DetalleVentaPage {
   disabled: string = "false";
   horario: string;
   textoBoton: string;
+  mostrar: boolean = true;
+  mostrarFoto: boolean = true;
+  titulo: string;
 
   constructor(
     public navCtrl: NavController,
@@ -34,68 +37,81 @@ export class DetalleVentaPage {
     if (typeof this.navParams.get("disabled") != "undefined") {
       this.disabled = "true";
       this.textoBoton = "Añadir a Carrito";
-    } else if (typeof this.navParams.get("editar") != "undefined"){
+      this.titulo = "Detalle Venta";
+      this.mostrar = false;
+    } else if (typeof this.navParams.get("editar") != "undefined") {
       this.textoBoton = "editar venta";
-    } else if (typeof this.navParams.get("crear") != "undefined"){
-      this.textoBoton = "Crear venta;"
+      this.titulo = "Editar Venta";
+    } else if (typeof this.navParams.get("crear") != "undefined") {
+      this.mostrarFoto = false;
+      this.textoBoton = "Crear venta";
+      this.titulo = "Crear Venta";
     }
-    console.log("disabled: " + this.disabled)
+    console.log("disabled: " + this.disabled  + ", mostrar: " + this.mostrar);
     console.log(this.idVenta);
   }
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad DetalleVentaPage");
+    if (typeof this.idVenta != "undefined") {
+      this.ventaProvider.getVenta(this.idVenta).subscribe(
+        data => {
+          this.venta = data;
+          // console.log(data)
+          console.log(this.venta);
+          this.date = this.datePipe.transform(
+            this.venta.fechaCreacion,
+            "dd-MM-yyyy"
+          );
+          console.log("date: " + this.date);
 
-    this.ventaProvider.getVenta(this.idVenta).subscribe(
-      data => {
-        this.venta = data;
-        // console.log(data)
-        console.log(this.venta);
-        this.date = this.datePipe.transform(
-          this.venta.fechaCreacion,
-          "dd-MM-yyyy"
-        );
-        console.log("date: " + this.date)
+          this.horario = this.datePipe.transform(
+            this.venta.rangoHoraDisponibleMin,
+            "HH:mm"
+          );
 
-        this.horario = this.datePipe.transform(
-          this.venta.rangoHoraDisponibleMin,
-          "HH:mm"
-        );
+          // this.homeProvider.getStringFoto(this.venta.idProducto).subscribe(
+          //   data => {
+          //     // this.ventas[i].fotoPath = data;
+          //     let path = data["foto"];
+          //     console.log("path: " + path);
+          //     this.homeProvider.getFoto(path).subscribe(
+          //       data => {
+          //         let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
 
-        this.homeProvider.getStringFoto(this.venta.idProducto).subscribe(
-          data => {
-            // this.ventas[i].fotoPath = data;
-            let path = data["foto"];
-            console.log("path: " + path);
-            this.homeProvider.getFoto(path).subscribe(
-              data => {
-                let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);
+          //         this.venta.foto = sanitized;
+          //       },
+          //       (error: any) => {
+          //         console.log(error);
+          //       }
+          //     );
+          //   },
+          //   (error: any) => {
+          //     console.log(error);
+          //   }
+          // );
+          this.ventaProvider.getVendedor(this.venta.idVenta).subscribe(
+            data => {
+              this.nombreUsuario = data["vendedor"];
+            },
+            error => {
+              console.log(error);
+            }
+          );
+        },
+        error => {
+          console.log(error);
+        }
+      );
+      console.log(this.venta.fechaCreacion);
+    }
+  }
 
-                this.venta.foto = sanitized;
-              },
-              (error: any) => {
-                console.log(error);
-              }
-            );
-          },
-          (error: any) => {
-            console.log(error);
-          }
-        );
-        this.ventaProvider.getVendedor(this.venta.idVenta).subscribe(
-          data => {
-            this.nombreUsuario = data["vendedor"];
-          },
-          error => {
-            console.log(error);
-          }
-        );
-      },
-      error => {
-        console.log(error);
-      }
-    );
-    console.log(this.venta.fechaCreacion);
+  handleFileInput(files: FileList){
+    if (typeof this.venta == "undefined"){
+      this.venta = new Venta();
+      this.venta.foto = files.item(0);
+    }
   }
 
   anyadirAcarrito() {}

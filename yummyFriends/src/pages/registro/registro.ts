@@ -106,6 +106,13 @@ export class RegistroPage {
             this.registroProvider.crearUsuario(usuario).subscribe(
               data => {
                 console.log("bien: " + data);
+                this.registroProvider.guardarFoto(usuario.idUsuario, usuario.fotoGuardar).subscribe(
+                  data => {
+
+                  }, error => {
+                    console.log(error);
+                  }
+                );
                 this.showLoading();
                 setTimeout(() => {
                   // this.navCtrl.push(HomePage);
@@ -126,6 +133,7 @@ export class RegistroPage {
           console.log(error);
         }
       );
+
     } else {
       this.showError("las contraseñas no coinciden");
     }

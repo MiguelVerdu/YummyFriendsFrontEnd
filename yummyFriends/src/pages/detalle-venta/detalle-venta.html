@@ -1,16 +1,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>DetalleVenta</ion-title>
+    <ion-title>{{titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
-  <ion-row class="logo-row">
+  <ion-row *ngIf="mostrarFoto" class="logo-row">
     <ion-col></ion-col>
     <ion-col width-67>
-      <img [src]="venta.foto" />
+      <img src="http://192.168.100.6:8080/recogerProducto/{{venta.idProducto}}" />
     </ion-col>
     <ion-col></ion-col>
   </ion-row>
@@ -19,6 +19,9 @@
       <ion-row>
         <ion-col>
           <ion-list inset>
+            <ion-item *ngIf="mostrar">
+              <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+            </ion-item>
             <ion-item>
               <ion-label>Producto:</ion-label>
               <ion-input type="text" [value]="venta.titulo" [disabled]="disabled"></ion-input>
