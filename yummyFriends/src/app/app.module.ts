@@ -26,6 +26,7 @@ import { VentaProvider } from '../providers/venta/venta';
 import { PerfilUsuarioProvider } from '../providers/perfil-usuario/perfil-usuario';
 import { DatePipe } from '@angular/common'
 import { HomeProvider } from '../providers/home/home';
+import { DetalleVentaProvider } from '../providers/detalle-venta/detalle-venta';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { HomeProvider } from '../providers/home/home';
     VentaProvider,
     PerfilUsuarioProvider,
     DatePipe,
-    HomeProvider
+    HomeProvider,
+    DetalleVentaProvider
   ]
 })
 export class AppModule {}
