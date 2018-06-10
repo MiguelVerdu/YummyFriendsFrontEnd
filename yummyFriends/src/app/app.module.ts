@@ -11,6 +11,7 @@ import { RecuperarPassPage } from '../pages/recuperar-pass/recuperar-pass';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { DetalleVentaPage } from '../pages/detalle-venta/detalle-venta';
 import { ResultadoBuscadorPage } from "../pages/resultado-buscador/resultado-buscador";
+import { ListadoVentasPage } from '../pages/listado-ventas/listado-ventas';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +37,8 @@ import { HomeProvider } from '../providers/home/home';
     RecuperarPassPage,
     PerfilUsuarioPage,
     DetalleVentaPage,
-    ResultadoBuscadorPage
+    ResultadoBuscadorPage,
+    ListadoVentasPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import { HomeProvider } from '../providers/home/home';
     RecuperarPassPage,
     PerfilUsuarioPage,
     DetalleVentaPage,
-    ResultadoBuscadorPage
+    ResultadoBuscadorPage,
+    ListadoVentasPage
   ],
   providers: [
     StatusBar,

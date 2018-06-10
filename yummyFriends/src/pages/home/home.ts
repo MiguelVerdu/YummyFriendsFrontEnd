@@ -30,6 +30,7 @@ export class HomePage {
     public homeProvider: HomeProvider,
     public sanitizer: DomSanitizer
   ) {
+
     this.getVentas();
     // this.items = [
     //   'Natasha Romanoff',
@@ -41,8 +42,12 @@ export class HomePage {
     // ]
   }
 
-  goDetalleVenta() {
-    this.navCtrl.push(DetalleVentaPage);
+  ionViewDidLoad(){
+
+  }
+
+  goDetalleVenta(id:number) {
+    this.navCtrl.push(DetalleVentaPage, {id: id, disabled: "true"});
   }
 
   goResBuscador(){
@@ -58,7 +63,7 @@ export class HomePage {
             data => {
               // this.ventas[i].fotoPath = data;
               let path = data["foto"];
-              // console.log("path: " + path);
+              console.log("path: " + path);
               this.homeProvider.getFoto(path).subscribe(
                 data => {
                   let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);

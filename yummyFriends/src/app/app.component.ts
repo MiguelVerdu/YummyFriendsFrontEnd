@@ -8,6 +8,7 @@ import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { RegistroPage } from '../pages/registro/registro';
 import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
+import { ListadoVentasPage } from '../pages/listado-ventas/listado-ventas';
 
 @Component({
   templateUrl: 'app.html'
@@ -27,7 +28,7 @@ export class MyApp {
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage },
       { title: 'Perfil', component: PerfilUsuarioPage} ,
-      { title: 'Listado Ventas', component: null} , //solo vendedor
+      { title: 'Listado Ventas', component: ListadoVentasPage} , //solo vendedor
       { title: 'Compras realizadas', component: null} ,
       { title: 'Encargos', component: null} ,
       { title: 'Carrito', component: null} ,

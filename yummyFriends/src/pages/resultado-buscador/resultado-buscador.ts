@@ -25,8 +25,8 @@ export class ResultadoBuscadorPage {
     console.log(this.busqueda)
   }
 
-  goDetalleVenta() {
-    this.navCtrl.push(DetalleVentaPage);
+  goDetalleVenta(id: number) {
+    this.navCtrl.push(DetalleVentaPage, { id: id, disabled: "true"});
   }
 
   getVentasFiltradas() {
@@ -38,7 +38,7 @@ export class ResultadoBuscadorPage {
             data => {
               // this.ventas[i].fotoPath = data;
               let path = data["foto"];
-              // console.log("path: " + path);
+              console.log("path: " + path);
               this.homeProvider.getFoto(path).subscribe(
                 data => {
                   let sanitized = this.sanitizer.bypassSecurityTrustUrl(data);

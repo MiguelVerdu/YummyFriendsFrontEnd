@@ -30,9 +30,9 @@
       </ion-thumbnail>
       <h2>{{venta.titulo}}</h2>
       <p>
-        {{venta.rangoHoraDisponibleMin | date:'hh:mm'}} - {{venta.rangoHorarioDisponibleMax | date:'hh:mm'}}
+        {{venta.rangoHoraDisponibleMin | date:'HH:mm'}} - {{venta.rangoHorarioDisponibleMax | date:'HH:mm'}}
       </p>
-      <button ion-button clear item-end (click)="goDetalleVenta()">
+      <button ion-button clear item-end (click)="goDetalleVenta(venta.idVenta)">
           <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>
     </ion-item>

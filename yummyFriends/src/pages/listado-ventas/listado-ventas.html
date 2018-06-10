@@ -1,0 +1,38 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Listado Ventas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list radio-group (ionChange)="change($event)">
+    <div class="row">
+      <ion-item style="width:47%">
+        <ion-label>Realizadas</ion-label>
+        <ion-radio value="realizadas"></ion-radio>
+      </ion-item>
+      <ion-item style="width:53%">
+        <ion-label>En Publicación</ion-label>
+        <ion-radio value="publicacion"></ion-radio>
+      </ion-item>
+    </div>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let venta of ventas">
+      <ion-thumbnail item-start>
+        <img [src]="venta.foto">
+      </ion-thumbnail>
+      <h2>{{venta.titulo}}</h2>
+      <p>
+        {{venta.rangoHoraDisponibleMin | date:'HH:mm'}} - {{venta.rangoHorarioDisponibleMax | date:'HH:mm'}}
+      </p>
+      <button ion-button clear item-end (click)="goDetalleVenta(venta.idVenta)">
+                <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
+            </button>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
