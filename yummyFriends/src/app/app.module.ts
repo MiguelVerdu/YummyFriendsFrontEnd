@@ -12,6 +12,8 @@ import { PerfilUsuarioPage } from '../pages/perfil-usuario/perfil-usuario';
 import { DetalleVentaPage } from '../pages/detalle-venta/detalle-venta';
 import { ResultadoBuscadorPage } from "../pages/resultado-buscador/resultado-buscador";
 import { ListadoVentasPage } from '../pages/listado-ventas/listado-ventas';
+import { ListadoComprasPage } from '../pages/listado-compras/listado-compras';
+import { AboutPage } from '../pages/about/about';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +29,7 @@ import { PerfilUsuarioProvider } from '../providers/perfil-usuario/perfil-usuari
 import { DatePipe } from '@angular/common'
 import { HomeProvider } from '../providers/home/home';
 import { DetalleVentaProvider } from '../providers/detalle-venta/detalle-venta';
+import { ListadoComprasProvider } from '../providers/listado-compras/listado-compras';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,9 @@ import { DetalleVentaProvider } from '../providers/detalle-venta/detalle-venta';
     PerfilUsuarioPage,
     DetalleVentaPage,
     ResultadoBuscadorPage,
-    ListadoVentasPage
+    ListadoVentasPage,
+    ListadoComprasPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +62,9 @@ import { DetalleVentaProvider } from '../providers/detalle-venta/detalle-venta';
     PerfilUsuarioPage,
     DetalleVentaPage,
     ResultadoBuscadorPage,
-    ListadoVentasPage
+    ListadoVentasPage,
+    ListadoComprasPage,
+    AboutPage
   ],
   providers: [
     StatusBar,
@@ -73,7 +80,8 @@ import { DetalleVentaProvider } from '../providers/detalle-venta/detalle-venta';
     PerfilUsuarioProvider,
     DatePipe,
     HomeProvider,
-    DetalleVentaProvider
+    DetalleVentaProvider,
+    ListadoComprasProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { NavController } from "ionic-angular";
+import { NavController, NavParams } from "ionic-angular";
 import { CiudadProvider } from "../../providers/ciudad/ciudad";
 import { Ciudad } from "../../entity/Ciudad";
 import { LoginPage } from "../login/login";
@@ -24,8 +24,10 @@ export class HomePage {
   private result: Observable<any> = this._result.asObservable();
   searchString: string;
   urlFoto: string;
+  idUsuario: number;
   constructor(
     public navCtrl: NavController,
+    public navParams: NavParams,
     public CiudadProvider: CiudadProvider,
     public ventaProvider: VentaProvider,
     public homeProvider: HomeProvider,
@@ -34,13 +36,15 @@ export class HomePage {
   ) {
     this.getVentas();
     this.urlFoto = this.vagl.ip + "fotoVenta/";
+    this.idUsuario = this.navParams.get("idUsuario");
+    console.log(this.idUsuario)
   }
 
   ionViewDidLoad(){
   }
 
   goDetalleVenta(id:number) {
-    this.navCtrl.push(DetalleVentaPage, {id: id, disabled: "true"});
+    this.navCtrl.push(DetalleVentaPage, {id: id, disabled: "true", idUsuario: this.idUsuario});
   }
 
   goResBuscador(){

@@ -27,13 +27,13 @@
   <ion-list>
     <ion-item *ngFor="let venta of ventas">
       <ion-thumbnail item-start>
-        <img src="http://192.168.100.6:8080/recogerProducto/{{venta.idProducto}}">
+        <img src="http://192.168.100.4:8080/recogerProducto/{{venta.idProducto}}">
       </ion-thumbnail>
       <h2>{{venta.titulo}}</h2>
       <p>
         {{venta.rangoHoraDisponibleMin | date:'HH:mm'}} - {{venta.rangoHorarioDisponibleMax | date:'HH:mm'}}
       </p>
-      <p *ngIf="realizadas">{{venta.precio}}</p>
+      <p *ngIf="realizadas">Total ganado: {{venta.precio}} €</p>
       <button *ngIf="!realizadas" ion-button clear item-end (click)="goDetalleVenta(venta.idVenta)">
           <ion-icon ios="ios-arrow-forward" md="md-arrow-forward"></ion-icon>
       </button>

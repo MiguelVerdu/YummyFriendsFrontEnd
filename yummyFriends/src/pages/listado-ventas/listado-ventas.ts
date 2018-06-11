@@ -26,7 +26,7 @@ export class ListadoVentasPage {
     public sanitizer: DomSanitizer
   ) {
     this.idUsuario = this.navParams.get("idUsuario");
-    // console.log(this.idUsuario)
+    console.log(this.idUsuario)
     this.getVentasRealizadas();
     this.getVentasEnPublicacion();
   }
@@ -130,10 +130,10 @@ export class ListadoVentasPage {
   }
 
   goDetalleVenta(idVenta: number) {
-    this.navCtrl.push(DetalleVentaPage, { id: idVenta, editar: "editar"});
+    this.navCtrl.push(DetalleVentaPage, { id: idVenta, editar: "editar", usuario: this.idUsuario});
   }
 
   crearVenta(){
-    this.navCtrl.push(DetalleVentaPage, { crear: "crear"});
+    this.navCtrl.push(DetalleVentaPage, { crear: "crear", usuario: this.idUsuario});
   }
 }

@@ -6,6 +6,6 @@ export class Producto {
   public descripcion: String;
 
   public foto: String;
-
+  public fotoGuardar?: File;
   public idUsuario: number;
 }

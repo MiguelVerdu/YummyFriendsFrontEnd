@@ -10,7 +10,7 @@
   <ion-row *ngIf="mostrarFoto" class="logo-row">
     <ion-col></ion-col>
     <ion-col width-67>
-      <img src="http://192.168.100.6:8080/recogerProducto/{{venta.idProducto}}" />
+      <img src="http://192.168.100.4:8080/recogerProducto/{{venta.idProducto}}" />
     </ion-col>
     <ion-col></ion-col>
   </ion-row>
@@ -28,14 +28,14 @@
             </ion-item>
             <ion-item *ngIf="mostrarFoto">
               <ion-label>Vendedor:</ion-label>
-              <ion-input type="text" [value]="nombreUsuario" [disabled]="disabled"></ion-input>
+              <ion-input type="text" [value]="nombreUsuario" [disabled]="desactivarVendedor"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>Fecha Alta:</ion-label>
+              <ion-label stacked>Fecha Alta (dd/mm/yyyy):</ion-label>
               <ion-input type="text" formControlName="fechaAlta" [value]="date" [disabled]="disabled"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label>Horario:</ion-label>
+              <ion-label stacked>Horario (HH:MM - HH:MM):</ion-label>
               <ion-input type="text" formControlName="horario" [value]="horario" [disabled]="disabled"></ion-input>
             </ion-item>
             <ion-item>
